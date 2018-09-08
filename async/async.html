@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    function getFile(fileName){
+        let xhr=new XMLHttpRequest();
+        xhr.open('get',fileName,true)
+        xhr.send();
+        xhr.onload = function(){
+            if(xhr.status==200){
+                console.log(xhr.responseText)
+            }
+        }
+    }
+    async function fn(){
+        let f1 = await getFile('text1.txt');
+        let f2 = await getFile('text2.txt');
+        let f3 = await getFile('text3.txt');
+        // console.log(f1)
+        // console.log(f2)
+        // console.log(f3)
+    };
+    fn();
+</script>
+</html>

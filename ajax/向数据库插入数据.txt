@@ -1,0 +1,1 @@
+向数据库插入数据：INSERT INTO information(username,age,sex,hobby) VALUES ('吕',20,'男','游戏');

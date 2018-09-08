@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="Ajax.js"></script>
+</head>
+<body>
+    <button class="sendTxt">发送请求</button>
+    <div class="text"></div>
+</body>
+<script>
+    let sendobj=document.querySelector('.sendTxt');
+    sendobj.onclick=function(){
+        Ajax('get','example.txt?t=' + new Date().getTime(),function(str){
+            document.querySelector('.text').innerHTML = str;
+        },function(message){
+            document.querySelector('.text').innerHTML = message;
+        });
+    }
+
+   //  function show(){
+   //      let ats=new XMLHttpRequest();
+   //      console.log('example.txt?t=' + new Date().getTime());
+   //      //浏览器存在缓存，当第一次访问文件时显示当前信息，再次访问则访问缓存，如果文件改变，则不会做出相应的改变，可以通过添加文件后方的时间缀来防止访问缓存
+   //      ats.open('GET','example.txt?t=' + new Date().getTime(),true);
+   //      ats.onreadystatechange = function(){
+			// 	// console.log("READYSTATE: ",xhr.readyState);
+   //              if(this.readyState==3){
+   //                  document.querySelector('.text').innerHTML='请等待处理！';
+   //              }
+			// 	if (this.status == 200 && this.readyState == 4) {
+			// 		// console.log(this.responseText);
+			// 		document.querySelector('.text').innerHTML = this.responseText;
+			// 	}else if(this.status == 404){
+			// 		// console.log("请求的网页不存在");
+			// 		document.querySelector('.text').innerHTML = "NOT Found";
+			// 	}
+			// }
+
+			// // 发送请求
+			// ats.send();
+   //  }
+</script>
+</html>

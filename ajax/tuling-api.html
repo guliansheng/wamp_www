@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>图灵接口</h1>
+	<textarea name="" id="userchat" cols="20" rows="4" style="resize: none;"></textarea>
+	<button class="button">提交</button>
+	<div class="tuling"></div>
+</body>
+<script type="text/javascript">
+	document.querySelector('.button').onclick=function(){
+		var text=document.querySelector('#userchat').value;
+		let json={
+			type:'GET',
+			url:`http://www.tuling123.com/openapi/api?key=75b316bee52444b4b9b9de91e8961eae&info=${text}`
+		}
+		chat(json);
+	};
+	function chat({type,url}){
+		// var type=json.type;
+		// var url=json.url;
+		console.log(url)
+		var tuling=document.querySelector('.tuling');
+		var xhr=new XMLHttpRequest();
+		xhr.open(type,url,true);
+		xhr.onprogress=function(){
+			setTimeout(function(){},1000);
+			tuling.innerHTML='加载中...';
+		}
+		xhr.onload=function(){
+			if(this.status==200){
+				var text=JSON.parse(this.responseText);
+				tuling.innerHTML=text.text;
+				console.log(text);
+			}
+			if(this.status==404){
+				tuling.innerHTML='请求的网页不存在';
+			}
+		}
+		document.querySelector('#userchat').value='';
+		xhr.send();
+	}
+	document.onkeydown=function(ev){
+		if(ev.ctrlKey && ev.keyCode==13){
+			document.querySelector('.button').click();
+		}
+	}
+</script>
+</html>

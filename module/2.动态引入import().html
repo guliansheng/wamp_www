@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+//默认的import {} from './url'不能动态引入,不能在if-else语句中;
+//1.import()可以按需求加载,可以放到if-else中;
+//2.import()返回值是promise对象;
+import('./import.js').then(res=>{//这个res == {a};
+    console.log('加载了')
+    console.log(res.a);
+});
+</script>
+</html>

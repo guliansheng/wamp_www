@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>module</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+</body>
+<!-- 如果浏览器不支持该语法可以将下面三条代码引入 -->
+<!-- <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+<script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+<script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script> -->
+<!-- 模块化必须在服务器端下进行 -->
+<script type='module'>
+    import {a} from './main.js';//最基本的引入js文件,并没有获取值;
+    console.log(a);
+
+    //简单的测试
+    import mod,{out,sum,j,k} from './page5.js';//这里mod直接代表Parson,也可以直接用Parson接收
+    let p = new mod('gu',25);
+    console.log(p.show());
+    out();
+    sum(45,78);
+    console.log(j,k);
+</script>
+<!-- 也可以这样引用<script type='module' src='./main.js'></script> -->
+</html>
